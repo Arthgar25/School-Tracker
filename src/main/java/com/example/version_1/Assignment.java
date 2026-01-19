@@ -11,7 +11,6 @@ public class Assignment {
 
     public Assignment(String title, LocalDate dueDate, AssignmentType type, String description) {
         this.title = title;
-        this.title = title;
         this.type = type;
         this.dueDate = dueDate;
         this.completed = false;
