@@ -9,6 +9,7 @@ public class AssignmentItemView extends HBox {
         this.assignment = assignment;
         Label title = new Label(assignment.getTitle());
         Label due = new Label(assignment.getDueDate().toString());
-        getChildren().addAll(title,due);
+        Label description = new Label(assignment.getDescription());
+        getChildren().addAll(title,due, description);
     }
 }

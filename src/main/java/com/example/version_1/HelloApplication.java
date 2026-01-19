@@ -6,19 +6,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         BorderPane root = new BorderPane();
         NavBar navBar = new NavBar();
+        AssignmentListView assignmentListView = new AssignmentListView();
 
         navBar.setOnAddCourse(() -> {
             System.out.println("Open Add Course dialog");
         });
 
         navBar.setOnAddAssignment(() -> {
-            System.out.println("Open Add Assignment dialog");
+            assignmentListView.addAssignment(new Assignment(navBar.getTitle(), navBar.getDueDate(), navBar.getType(), navBar.getDescription()));
         });
 
         navBar.setOnClearList(() -> {
@@ -26,6 +28,7 @@ public class HelloApplication extends Application {
         });
 
         root.setTop(navBar);
+        root.setCenter(assignmentListView);
         Scene scene = new Scene(root, 320, 240);
         stage.setTitle("Semester Planner");
         stage.setScene(scene);

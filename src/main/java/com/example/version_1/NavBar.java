@@ -1,14 +1,20 @@
 package com.example.version_1;
 import javafx.application.Application;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+
+import java.time.LocalDate;
 
 public class NavBar extends HBox{
     private Button addCourseBtn;
     private Button addAssignmentBtn;
     private Button clearList;
+    private TextField title;
+    private DatePicker dueDate;
+    private ComboBox<AssignmentType> typeBox;
+    private TextArea description;
 
     public NavBar(){
         initialize();
@@ -19,6 +25,17 @@ public class NavBar extends HBox{
         addCourseBtn = new Button("Add Course");
         addAssignmentBtn = new Button("Add Assignment");
         clearList = new Button("Clear List");
+        title = new TextField();
+        dueDate = new DatePicker();
+        typeBox = new ComboBox<>();
+        description =  new TextArea();
+
+        description.setPromptText("Enter Description");
+        description.setPrefRowCount(1);
+        typeBox.getItems().addAll(AssignmentType.values());
+        typeBox.setValue(AssignmentType.HOMEWORK);
+        title.setPromptText("Assignment Title");
+        dueDate.setValue(LocalDate.now());
 
         addCourseBtn.prefWidthProperty().bind(
                 widthProperty().multiply(0.15)
@@ -35,8 +52,7 @@ public class NavBar extends HBox{
         setSpacing(10);
         setPadding(new Insets(10,10,10,10));
         setAlignment(Pos.CENTER_LEFT);
-
-        getChildren().addAll(addCourseBtn,addAssignmentBtn);
+        getChildren().addAll(addAssignmentBtn, title, dueDate, typeBox, description);
         setMinHeight(50);
     }
 
@@ -50,5 +66,21 @@ public class NavBar extends HBox{
 
     public void setOnClearList(Runnable action) {
         clearList.setOnAction(e -> action.run());
+    }
+
+    public String getTitle(){
+        return title.getText();
+    }
+
+    public LocalDate getDueDate(){
+        return dueDate.getValue();
+    }
+
+    public AssignmentType getType(){
+        return typeBox.getValue();
+    }
+
+    public String getDescription(){
+        return description.getText();
     }
 }
