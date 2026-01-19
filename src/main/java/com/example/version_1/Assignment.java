@@ -37,8 +37,11 @@ public class Assignment {
         return description;
     }
 
+    public boolean getCompleted() {
+        return completed;
+    }
     //Setters/Actions
-    public void markCompleted() {
-        this.completed = true;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }
