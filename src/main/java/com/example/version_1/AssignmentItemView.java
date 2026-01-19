@@ -37,4 +37,8 @@ public class AssignmentItemView extends HBox {
 
         getChildren().addAll(completedCheckBox, title, due, assignmentType, description);
     }
+
+    public Assignment getAssignment() {
+        return assignment;
+    }
 }

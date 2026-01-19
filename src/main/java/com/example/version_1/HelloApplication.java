@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
         });
 
         navBar.setOnClearList(() -> {
-            System.out.println("Open Clear List dialog");
+            assignmentListView.hideCompleted();
         });
 
         root.setTop(navBar);

@@ -52,7 +52,7 @@ public class NavBar extends HBox{
         setSpacing(10);
         setPadding(new Insets(10,10,10,10));
         setAlignment(Pos.CENTER_LEFT);
-        getChildren().addAll(addAssignmentBtn, title, dueDate, typeBox, description);
+        getChildren().addAll(title, dueDate, typeBox, description, addAssignmentBtn, clearList);
         setMinHeight(50);
     }
 
