@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         AssignmentStorage assignmentStorage = new AssignmentStorage();
 
         assignmentStorage.load();
+        assignmentStorage.save();
 
         navBar.setOnAddCourse(() -> {
             System.out.println("Open Add Course dialog");
