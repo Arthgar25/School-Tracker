@@ -15,16 +15,26 @@ public class HelloApplication extends Application {
         NavBar navBar = new NavBar();
         AssignmentListView assignmentListView = new AssignmentListView();
         AssignmentStorage assignmentStorage = new AssignmentStorage();
-
         assignmentStorage.load();
-        assignmentStorage.save();
+
+        for(Assignment assignment : assignmentStorage.getAssignments()){
+            assignmentListView.addAssignment(assignment);
+        }
 
         navBar.setOnAddCourse(() -> {
             System.out.println("Open Add Course dialog");
         });
 
         navBar.setOnAddAssignment(() -> {
-            assignmentListView.addAssignment(new Assignment(navBar.getTitle(), navBar.getDueDate(), navBar.getType(), navBar.getDescription()));
+            Assignment assignment = new Assignment(
+                    navBar.getTitle(),
+                    navBar.getDueDate(),
+                    navBar.getType(),
+                    navBar.getDescription()
+            );
+
+            assignmentStorage.addAssignment(assignment);
+            assignmentListView.addAssignment(assignment);
         });
 
         navBar.setOnClearList(() -> {

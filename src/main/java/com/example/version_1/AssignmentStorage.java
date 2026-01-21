@@ -18,7 +18,24 @@ public class AssignmentStorage {
         this.filePath = Path.of(System.getProperty("user.home"), FILE_NAME);
     }
     public void load(){
+        assignments.clear();
 
+        if (!Files.exists(filePath)) {
+            return;
+        }
+
+        try (BufferedReader reader = Files.newBufferedReader(filePath)) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                Assignment assignment = parseLine(line);
+                if (assignment != null) {
+                    assignments.add(assignment);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void save(){
@@ -66,7 +83,6 @@ public class AssignmentStorage {
 
             return assignment;
         } catch (Exception e) {
-            // Skip malformed lines
             return null;
         }
     }
