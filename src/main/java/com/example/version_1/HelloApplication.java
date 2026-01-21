@@ -14,6 +14,9 @@ public class HelloApplication extends Application {
         BorderPane root = new BorderPane();
         NavBar navBar = new NavBar();
         AssignmentListView assignmentListView = new AssignmentListView();
+        AssignmentStorage assignmentStorage = new AssignmentStorage();
+
+        assignmentStorage.load();
 
         navBar.setOnAddCourse(() -> {
             System.out.println("Open Add Course dialog");
