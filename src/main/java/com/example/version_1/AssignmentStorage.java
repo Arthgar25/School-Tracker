@@ -33,16 +33,41 @@ public class AssignmentStorage {
     }
 
     private String serializeAssignment(Assignment assignment) {
-        return "line";
+        return String.join("|",
+                assignment.getTitle(),
+                assignment.getDueDate().toString(),
+                assignment.getType().name(),
+                Boolean.toString(assignment.isCompleted()),
+                assignment.getDescription().replace("\n", " ")
+        );
     }
 
     public void addAssignment(Assignment assignment){
-
+        assignments.add(assignment);
+        save();
     }
 
     public List<Assignment> getAssignments(){
         return assignments;
     }
 
+    public Assignment parseLine(String line){
+        try {
+            String[] parts = line.split("\\|", -1);
 
+            String title = parts[0];
+            LocalDate dueDate = LocalDate.parse(parts[1]);
+            AssignmentType type = AssignmentType.valueOf(parts[2]);
+            boolean completed = Boolean.parseBoolean(parts[3]);
+            String description = parts[4];
+
+            Assignment assignment = new Assignment(title, dueDate, type, description);
+            assignment.setCompleted(completed);
+
+            return assignment;
+        } catch (Exception e) {
+            // Skip malformed lines
+            return null;
+        }
+    }
 }
