@@ -20,7 +20,6 @@ public class AssignmentStorage {
     }
 
     public void load(){
-        System.out.println(filePath.toAbsolutePath());
         assignments.clear();
 
         if (!Files.exists(filePath)) {
@@ -58,7 +57,7 @@ public class AssignmentStorage {
                 assignment.getTitle(),
                 assignment.getDueDate().toString(),
                 assignment.getType().name(),
-                Boolean.toString(assignment.isCompleted()),
+                Boolean.toString(assignment.getCompleted()),
                 assignment.getDescription().replace("\n", " ")
         );
     }

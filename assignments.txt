@@ -1,6 +1,6 @@
-Test 5|2026-01-05|HOMEWORK|false|first
-Test 4|2026-01-20|HOMEWORK|false|This should pop first on the list
-Test 5|2026-01-21|HOMEWORK|false|first
-Test 3|2026-01-22|HOMEWORK|false|Entre esta tercero
-Test 1|2026-01-24|HOMEWORK|false|Entre esta primero
-Test 2|2026-01-31|HOMEWORK|false|Entre esta segundo
+Test 5|2026-01-05|HOMEWORK|true|first
+Test 4|2026-01-20|HOMEWORK|true|This should pop first on the list
+Test 5|2026-01-21|HOMEWORK|true|first
+Test 3|2026-01-22|HOMEWORK|true|Entre esta tercero
+Test 1|2026-01-24|HOMEWORK|true|Entre esta primero
+Test 2|2026-01-31|HOMEWORK|true|Entre esta segundo

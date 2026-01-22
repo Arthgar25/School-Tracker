@@ -27,7 +27,7 @@ public class AssignmentListView extends ScrollPane {
     public void hideCompleted(){
         listContainer.getChildren().clear();
         for (AssignmentItemView item : items){
-            if(!item.getAssignment().isCompleted()){
+            if(!item.getAssignment().getCompleted()){
                 listContainer.getChildren().add(item);
             }
         }
