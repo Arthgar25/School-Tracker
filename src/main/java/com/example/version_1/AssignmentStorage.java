@@ -1,12 +1,12 @@
 package com.example.version_1;
 
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class AssignmentStorage {
@@ -36,6 +36,7 @@ public class AssignmentStorage {
                     assignments.add(assignment);
                 }
             }
+            assignments.sort(Comparator.comparing(Assignment::getDueDate));
         } catch (IOException e) {
             e.printStackTrace();
         }
