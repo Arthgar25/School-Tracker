@@ -1,5 +1,4 @@
 package com.example.version_1;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,14 +20,11 @@ public class AssignmentStorage {
 
     public void load(){
         assignments.clear();
-
         if (!Files.exists(filePath)) {
             return;
         }
-
         try (BufferedReader reader = Files.newBufferedReader(filePath)) {
             String line;
-
             while ((line = reader.readLine()) != null) {
                 Assignment assignment = parseLine(line);
                 if (assignment != null && !assignment.getCompleted()) {
@@ -75,16 +71,13 @@ public class AssignmentStorage {
     public Assignment parseLine(String line){
         try {
             String[] parts = line.split("\\|", -1);
-
             String title = parts[0];
             LocalDate dueDate = LocalDate.parse(parts[1]);
             AssignmentType type = AssignmentType.valueOf(parts[2]);
             boolean completed = Boolean.parseBoolean(parts[3]);
             String description = parts[4];
-
             Assignment assignment = new Assignment(title, dueDate, type, description);
             assignment.setCompleted(completed);
-
             return assignment;
         } catch (Exception e) {
             return null;
