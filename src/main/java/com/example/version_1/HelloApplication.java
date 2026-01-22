@@ -6,7 +6,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class HelloApplication extends Application {
     @Override
@@ -39,11 +38,12 @@ public class HelloApplication extends Application {
 
         navBar.setOnClearList(() -> {
             assignmentListView.hideCompleted();
+            assignmentStorage.save();
         });
 
         root.setTop(navBar);
         root.setCenter(assignmentListView);
-        Scene scene = new Scene(root, 320, 240);
+        Scene scene = new Scene(root, 720, 480);
         stage.setTitle("Semester Planner");
         stage.setScene(scene);
         stage.show();

@@ -4,6 +4,7 @@ package com.example.version_1;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,11 @@ public class AssignmentStorage {
 
     public AssignmentStorage() {
         this.assignments = new ArrayList<>();
-        this.filePath = Path.of(System.getProperty("user.home"), FILE_NAME);
+        this.filePath = Paths.get("assignments.txt");
     }
+
     public void load(){
+        System.out.println(filePath.toAbsolutePath());
         assignments.clear();
 
         if (!Files.exists(filePath)) {
@@ -29,7 +32,7 @@ public class AssignmentStorage {
 
             while ((line = reader.readLine()) != null) {
                 Assignment assignment = parseLine(line);
-                if (assignment != null) {
+                if (assignment != null && !assignment.getCompleted()) {
                     assignments.add(assignment);
                 }
             }
