@@ -1,6 +1,7 @@
 package com.example.version_1;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Assignment {
     private String title;
@@ -15,6 +16,7 @@ public class Assignment {
         this.dueDate = dueDate;
         this.completed = false;
         this.description = description;
+        System.out.println(daysUntilDue());
     }
 
     //Getters
@@ -43,5 +45,9 @@ public class Assignment {
     //Setters/Actions
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public long daysUntilDue() {
+        return ChronoUnit.DAYS.between(LocalDate.now(), dueDate);
     }
 }

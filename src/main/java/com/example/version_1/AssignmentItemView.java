@@ -23,7 +23,7 @@ public class AssignmentItemView extends HBox {
         """);
 
         Label title = new Label(assignment.getTitle());
-        Label due = new Label(assignment.getDueDate().toString());
+        Label due = new Label(assignment.daysUntilDue() + " days");
         Label description = new Label(assignment.getDescription());
         Label assignmentType = new Label(assignment.getType().toString());
 
