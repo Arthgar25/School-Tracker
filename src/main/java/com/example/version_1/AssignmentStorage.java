@@ -65,6 +65,7 @@ public class AssignmentStorage {
 
     public void addAssignment(Assignment assignment){
         assignments.add(assignment);
+        assignments.sort(Comparator.comparing(Assignment::getDueDate));
         save();
     }
 
