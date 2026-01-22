@@ -1,10 +1,8 @@
 package com.example.version_1;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -31,7 +29,6 @@ public class HelloApplication extends Application {
                     navBar.getType(),
                     navBar.getDescription()
             );
-
             assignmentStorage.addAssignment(assignment);
             assignmentListView.addAssignment(assignment);
             assignmentListView.refresh(assignmentStorage.getAssignments());

@@ -56,31 +56,25 @@ public class NavBar extends HBox{
         setMinHeight(50);
     }
 
-    public void setOnAddCourse(Runnable action) {
-        addCourseBtn.setOnAction(e -> action.run());
-    }
-
-    public void setOnAddAssignment(Runnable action) {
-        addAssignmentBtn.setOnAction(e -> action.run());
-    }
-
-    public void setOnClearList(Runnable action) {
-        clearList.setOnAction(e -> action.run());
-    }
-
     public String getTitle(){
         return title.getText();
     }
-
     public LocalDate getDueDate(){
         return dueDate.getValue();
     }
-
     public AssignmentType getType(){
         return typeBox.getValue();
     }
-
     public String getDescription(){
         return description.getText();
+    }
+    public void setOnAddCourse(Runnable action) {
+        addCourseBtn.setOnAction(e -> action.run());
+    }
+    public void setOnAddAssignment(Runnable action) {
+        addAssignmentBtn.setOnAction(e -> action.run());
+    }
+    public void setOnClearList(Runnable action) {
+        clearList.setOnAction(e -> action.run());
     }
 }
