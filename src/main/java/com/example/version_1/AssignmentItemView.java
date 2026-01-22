@@ -23,7 +23,7 @@ public class AssignmentItemView extends HBox {
         """);
 
         Label title = new Label(assignment.getTitle());
-        Label due = new Label(assignment.daysUntilDue() + " days");
+        Label due = new Label(formatDueText());
         Label description = new Label(assignment.getDescription());
         Label assignmentType = new Label(assignment.getType().toString());
 
@@ -40,5 +40,17 @@ public class AssignmentItemView extends HBox {
 
     public Assignment getAssignment() {
         return assignment;
+    }
+
+    private String formatDueText() {
+        long days = assignment.daysUntilDue();
+
+        if (days > 0) {
+            return "Due in " + days + " days";
+        } else if (days == 0) {
+            return "Due today";
+        } else {
+            return "Overdue by " + Math.abs(days) + " days";
+        }
     }
 }
