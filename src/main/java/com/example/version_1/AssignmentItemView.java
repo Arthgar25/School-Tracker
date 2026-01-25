@@ -19,6 +19,8 @@ public class AssignmentItemView extends HBox {
             -fx-background-color: #f9f9f9;
         """);
 
+        Label courseLabel = new Label("[" + assignment.getCourseName() + "]");
+//        courseLabel.setStyle("-fx-text-fill: #888888;");
         Label title = new Label(assignment.getTitle());
         Label due = new Label(formatDueText());
         Label description = new Label(assignment.getDescription());
@@ -30,7 +32,7 @@ public class AssignmentItemView extends HBox {
         completedCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
             assignment.setCompleted(newVal);
         });
-        getChildren().addAll(completedCheckBox, title, due, assignmentType, description);
+        getChildren().addAll(completedCheckBox, courseLabel, title, due, assignmentType, description);
     }
 
     public Assignment getAssignment() {

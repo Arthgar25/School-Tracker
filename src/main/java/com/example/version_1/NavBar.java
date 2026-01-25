@@ -47,6 +47,8 @@ public class NavBar extends VBox {
         description =  new TextArea();
         description.setPromptText("Enter Description");
         description.setPrefRowCount(1);
+        description.setPrefColumnCount(15);
+        description.setMaxWidth(200);
         typeBox.getItems().addAll(AssignmentType.values());
         typeBox.setValue(AssignmentType.HOMEWORK);
         title.setPromptText("Assignment Title");
@@ -149,6 +151,10 @@ public class NavBar extends VBox {
 
     public String getCourseName() {
         return courseNameField.getText();
+    }
+
+    public String getCourseBox(){
+        return courseBox.getSelectionModel().getSelectedItem().toString();
     }
 
     public void resetCourseForm() {
