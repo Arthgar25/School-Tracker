@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -52,6 +53,7 @@ public class AssignmentStorage {
         return String.join("|",
                 assignment.getTitle(),
                 assignment.getDueDate().toString(),
+                assignment.getDueTime().toString(),
                 assignment.getType().name(),
                 Boolean.toString(assignment.getCompleted()),
                 assignment.getDescription().replace("\n", " "),
@@ -74,11 +76,12 @@ public class AssignmentStorage {
             String[] parts = line.split("\\|", -1);
             String title = parts[0];
             LocalDate dueDate = LocalDate.parse(parts[1]);
-            AssignmentType type = AssignmentType.valueOf(parts[2]);
-            boolean completed = Boolean.parseBoolean(parts[3]);
-            String description = parts[4];
-            String courseName = parts[5];
-            Assignment assignment = new Assignment(title, dueDate, type, description, courseName);
+            LocalTime dueTime = LocalTime.parse(parts[2]);
+            AssignmentType type = AssignmentType.valueOf(parts[3]);
+            boolean completed = Boolean.parseBoolean(parts[4]);
+            String description = parts[5];
+            String courseName = parts[6];
+            Assignment assignment = new Assignment(title, dueDate, dueTime, type, description, courseName);
             assignment.setCompleted(completed);
             return assignment;
         } catch (Exception e) {

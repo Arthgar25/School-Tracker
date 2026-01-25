@@ -12,10 +12,11 @@ public class Assignment {
     private String description;
     private String courseName;
 
-    public Assignment(String title, LocalDate dueDate, AssignmentType type, String description, String courseName) {
+    public Assignment(String title, LocalDate dueDate, LocalTime dueTime, AssignmentType type, String description, String courseName) {
         this.title = title;
         this.type = type;
         this.dueDate = dueDate;
+        this.dueTime = dueTime;
         this.completed = false;
         this.description = description;
         this.courseName = courseName;

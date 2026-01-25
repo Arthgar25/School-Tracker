@@ -44,6 +44,7 @@ public class HelloApplication extends Application {
                 Assignment assignment = new Assignment(
                         navBar.getTitle(),
                         navBar.getDueDate(),
+                        navBar.getDueTime(),
                         navBar.getType(),
                         navBar.getDescription(),
                         navBar.getCourseName()
