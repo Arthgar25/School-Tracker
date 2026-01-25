@@ -15,7 +15,7 @@ public class AssignmentStorage {
 
     public AssignmentStorage() {
         this.assignments = new ArrayList<>();
-        this.filePath = Paths.get("assignments.txt");
+        this.filePath = Paths.get(FILE_NAME);
     }
 
     public void load(){

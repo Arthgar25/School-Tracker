@@ -1,5 +1,4 @@
 package com.example.version_1;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +9,19 @@ public class Course {
     private ArrayList<Assignment> assignments = new ArrayList<>();
     private Map<AssignmentType, EvaluationCriterion> gradingScheme = new HashMap<>();
 
+    public Course(){
+        this.group = "";
+        this.name = "Courses";
+    }
+
     public Course(String group, String name) {
         this.group = group;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public void addEvaluationCriterion(AssignmentType type, double percentage){
@@ -35,5 +44,18 @@ public class Course {
         if (count == 0) return 0.0;
 
         return criterion.getPercentage() / count;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+    public void setGroup(String group) {
+        this.group = group;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }

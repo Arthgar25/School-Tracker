@@ -1,11 +1,11 @@
 package com.example.version_1;
-import javafx.application.Application;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class NavBar extends HBox{
     private Button addCourseBtn;
@@ -14,7 +14,9 @@ public class NavBar extends HBox{
     private TextField title;
     private DatePicker dueDate;
     private ComboBox<AssignmentType> typeBox;
+    private ComboBox<Course> courseBox;
     private TextArea description;
+    private Course defaultCourse;
 
     public NavBar(){
         initialize();
@@ -28,8 +30,10 @@ public class NavBar extends HBox{
         title = new TextField();
         dueDate = new DatePicker();
         typeBox = new ComboBox<>();
-        description =  new TextArea();
+        courseBox = new ComboBox<>();
 
+        courseBox.setValue(defaultCourse);
+        description =  new TextArea();
         description.setPromptText("Enter Description");
         description.setPrefRowCount(1);
         typeBox.getItems().addAll(AssignmentType.values());
@@ -52,7 +56,7 @@ public class NavBar extends HBox{
         setSpacing(10);
         setPadding(new Insets(10,10,10,10));
         setAlignment(Pos.CENTER_LEFT);
-        getChildren().addAll(title, dueDate, typeBox, description, addAssignmentBtn, clearList);
+        getChildren().addAll(title, dueDate, typeBox, courseBox, description, addAssignmentBtn, clearList);
         setMinHeight(50);
     }
 
@@ -90,5 +94,19 @@ public class NavBar extends HBox{
     }
     public void setOnClearList(Runnable action) {
         clearList.setOnAction(e -> action.run());
+    }
+
+    public void addCourse(Course course){
+        courseBox.getItems().add(course);
+        courseBox.setValue(course);
+    }
+
+    public void setCourses(List<Course> courses, Course defaultCourse) {
+        this.defaultCourse = defaultCourse;
+        courseBox.getItems().setAll(courses);
+        courseBox.setValue(defaultCourse);
+    }
+    public Course getCourse() {
+        return courseBox.getValue();
     }
 }

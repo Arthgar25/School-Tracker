@@ -13,10 +13,20 @@ public class HelloApplication extends Application {
         AssignmentListView assignmentListView = new AssignmentListView();
         AssignmentStorage assignmentStorage = new AssignmentStorage();
         assignmentStorage.load();
+        CourseStorage courseStorage = new CourseStorage();
+        courseStorage.load();
 
         for(Assignment assignment : assignmentStorage.getAssignments()){
             assignmentListView.addAssignment(assignment);
         }
+
+        Course defaultCourse = new Course(" ", "COURSES");
+        if (courseStorage.getCourses().isEmpty()) {
+            courseStorage.addCourse(defaultCourse);
+        }
+
+        navBar.setCourses(courseStorage.getCourses(), defaultCourse);
+
 
         navBar.setOnAddCourse(() -> {
             System.out.println("Open Add Course dialog");

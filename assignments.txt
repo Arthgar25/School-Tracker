@@ -1,3 +1,1 @@
-mhgjdfg|2026-01-09|WORKSHOP|false|,cdgchkdgk
-|2026-01-24|HOMEWORK|true|
-asdfgasdgf|2026-01-24|HOMEWORK|true|
+mhgjdfg|2026-01-09|WORKSHOP|true|,cdgchkdgk
