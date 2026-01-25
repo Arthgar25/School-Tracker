@@ -54,7 +54,8 @@ public class AssignmentStorage {
                 assignment.getDueDate().toString(),
                 assignment.getType().name(),
                 Boolean.toString(assignment.getCompleted()),
-                assignment.getDescription().replace("\n", " ")
+                assignment.getDescription().replace("\n", " "),
+                assignment.getCourseName()
         );
     }
 
@@ -76,7 +77,8 @@ public class AssignmentStorage {
             AssignmentType type = AssignmentType.valueOf(parts[2]);
             boolean completed = Boolean.parseBoolean(parts[3]);
             String description = parts[4];
-            Assignment assignment = new Assignment(title, dueDate, type, description);
+            String courseName = parts[5];
+            Assignment assignment = new Assignment(title, dueDate, type, description, courseName);
             assignment.setCompleted(completed);
             return assignment;
         } catch (Exception e) {

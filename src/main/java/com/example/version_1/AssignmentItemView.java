@@ -3,6 +3,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import java.time.format.DateTimeFormatter;
 
 public class AssignmentItemView extends HBox {
     private Assignment assignment;
@@ -38,13 +39,17 @@ public class AssignmentItemView extends HBox {
 
     private String formatDueText() {
         long days = assignment.daysUntilDue();
-
+        String timePart = "";
+        if (assignment.getDueTime() != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            timePart = " at " + assignment.getDueTime().format(formatter);
+        }
         if (days > 0) {
-            return "Due in " + days + " days";
+            return "Due in " + days + " days" + timePart;
         } else if (days == 0) {
-            return "Due today";
+            return "Due today" + timePart;
         } else {
-            return "Overdue by " + Math.abs(days) + " days";
+            return "Overdue by " + Math.abs(days) + " days" + timePart;
         }
     }
 }

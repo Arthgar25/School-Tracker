@@ -45,7 +45,8 @@ public class HelloApplication extends Application {
                         navBar.getTitle(),
                         navBar.getDueDate(),
                         navBar.getType(),
-                        navBar.getDescription()
+                        navBar.getDescription(),
+                        navBar.getCourseName()
                 );
                 assignmentStorage.addAssignment(assignment);
                 assignmentListView.addAssignment(assignment);

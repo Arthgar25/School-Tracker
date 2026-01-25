@@ -4,6 +4,9 @@ import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
+import javafx.util.converter.LocalTimeStringConverter;
+import java.time.LocalTime;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,6 +24,7 @@ public class NavBar extends VBox {
     private ComboBox<Course> courseBox;
     private TextArea description;
     private Course defaultCourse;
+    private Spinner<LocalTime> dueTime;
 
     public NavBar(){
         initialize();
@@ -48,6 +52,36 @@ public class NavBar extends VBox {
         typeBox.setValue(AssignmentType.HOMEWORK);
         title.setPromptText("Assignment Title");
         dueDate.setValue(LocalDate.now());
+        dueTime = new Spinner<>();
+        dueTime.setEditable(true);
+
+        SpinnerValueFactory<LocalTime> timeFactory =
+                new SpinnerValueFactory<LocalTime>() {
+
+                    {
+                        setValue(LocalTime.of(12, 0)); // 12:00 PM default
+                    }
+
+                    @Override
+                    public void decrement(int steps) {
+                        LocalTime current = getValue();
+                        setValue(current.minusMinutes(15L * steps));
+                    }
+
+                    @Override
+                    public void increment(int steps) {
+                        LocalTime current = getValue();
+                        setValue(current.plusMinutes(15L * steps));
+                    }
+                };
+
+        timeFactory.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                dueTime.getEditor().setText(newVal.toString());
+            }
+        });
+
+        dueTime.setValueFactory(timeFactory);
 
         addCourseBtn.prefWidthProperty().bind(
                 widthProperty().multiply(0.15)
@@ -66,7 +100,7 @@ public class NavBar extends VBox {
 
         assignmentRow.setAlignment(Pos.CENTER_LEFT);
         assignmentRow.getChildren().addAll(
-                title, dueDate, typeBox, courseBox, description, addAssignmentBtn, clearList
+                title, dueDate, dueTime, typeBox, courseBox, description, addAssignmentBtn, clearList
         );
 
         courseRow.setAlignment(Pos.CENTER_LEFT);
@@ -82,6 +116,7 @@ public class NavBar extends VBox {
         dueDate.setValue(LocalDate.now());
         typeBox.setValue(AssignmentType.HOMEWORK);
         description.clear();
+        dueTime.getValueFactory().setValue(LocalTime.of(12, 0));
     }
 
     public boolean isClear(){
@@ -125,6 +160,9 @@ public class NavBar extends VBox {
         return courseNameField.getText().isEmpty();
     }
 
+    public LocalTime getDueTime() {
+        return dueTime.getValue();
+    }
 
     public void addCourse(Course course){
         courseBox.getItems().add(course);
