@@ -1,1 +1,10 @@
-Courses| 
+Courses|null
+Matematicas Discretas|null
+Señales y Sistemas|null
+Diseño Digital|null
+Ingenieria Economica|null
+Electronica Aplicada|null
+Circuitos Electricos|null
+Organizacion y Arquitectura|null
+UNIX|null
+Topicos de P. I.|null

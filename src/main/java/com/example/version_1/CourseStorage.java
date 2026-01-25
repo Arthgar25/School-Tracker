@@ -55,7 +55,7 @@ public class CourseStorage {
             String[] parts = line.split("\\|", -1);
             String name = parts[0];
             String group = parts[1];
-            Course course = new Course(name, group);
+            Course course = new Course(name);
             return course;
         } catch (Exception e){
             return null;

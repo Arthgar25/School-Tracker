@@ -14,8 +14,7 @@ public class Course {
         this.name = "Courses";
     }
 
-    public Course(String group, String name) {
-        this.group = group;
+    public Course(String name) {
         this.name = name;
     }
 

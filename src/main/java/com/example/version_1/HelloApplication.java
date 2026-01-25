@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
             assignmentListView.addAssignment(assignment);
         }
 
-        Course defaultCourse = new Course(" ", "COURSES");
+        Course defaultCourse = new Course("COURSES");
         if (courseStorage.getCourses().isEmpty()) {
             courseStorage.addCourse(defaultCourse);
         }
@@ -29,7 +29,12 @@ public class HelloApplication extends Application {
 
 
         navBar.setOnAddCourse(() -> {
-            System.out.println("Open Add Course dialog");
+            if(!navBar.isCourseNameEmpty()){
+                Course course = new Course(navBar.getCourseName());
+                courseStorage.addCourse(course);
+                navBar.addCourse(course);
+                navBar.resetCourseForm();
+            }
         });
 
         navBar.setOnAddAssignment(() -> {

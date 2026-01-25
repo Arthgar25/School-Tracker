@@ -3,11 +3,15 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.layout.VBox;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class NavBar extends HBox{
+public class NavBar extends VBox {
+    private HBox assignmentRow;
+    private HBox courseRow;
+    private TextField courseNameField;
     private Button addCourseBtn;
     private Button addAssignmentBtn;
     private Button clearList;
@@ -24,6 +28,8 @@ public class NavBar extends HBox{
     }
 
     private void initialize(){
+        courseNameField = new TextField();
+        courseNameField.setPromptText("Course Name");
         addCourseBtn = new Button("Add Course");
         addAssignmentBtn = new Button("Add Assignment");
         clearList = new Button("Clear List");
@@ -32,6 +38,8 @@ public class NavBar extends HBox{
         typeBox = new ComboBox<>();
         courseBox = new ComboBox<>();
 
+        assignmentRow = new HBox(10);
+        courseRow = new HBox(10);
         courseBox.setValue(defaultCourse);
         description =  new TextArea();
         description.setPromptText("Enter Description");
@@ -53,11 +61,20 @@ public class NavBar extends HBox{
     }
 
     private void layOut(){
-        setSpacing(10);
-        setPadding(new Insets(10,10,10,10));
-        setAlignment(Pos.CENTER_LEFT);
-        getChildren().addAll(title, dueDate, typeBox, courseBox, description, addAssignmentBtn, clearList);
-        setMinHeight(50);
+        setSpacing(8);
+        setPadding(new Insets(10));
+
+        assignmentRow.setAlignment(Pos.CENTER_LEFT);
+        assignmentRow.getChildren().addAll(
+                title, dueDate, typeBox, courseBox, description, addAssignmentBtn, clearList
+        );
+
+        courseRow.setAlignment(Pos.CENTER_LEFT);
+        courseRow.getChildren().addAll(
+                courseNameField, addCourseBtn
+        );
+
+        getChildren().addAll(assignmentRow, courseRow);
     }
 
     public void resetForm(){
@@ -95,6 +112,19 @@ public class NavBar extends HBox{
     public void setOnClearList(Runnable action) {
         clearList.setOnAction(e -> action.run());
     }
+
+    public String getCourseName() {
+        return courseNameField.getText();
+    }
+
+    public void resetCourseForm() {
+        courseNameField.clear();
+    }
+
+    public boolean isCourseNameEmpty() {
+        return courseNameField.getText().isEmpty();
+    }
+
 
     public void addCourse(Course course){
         courseBox.getItems().add(course);
