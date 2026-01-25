@@ -56,6 +56,14 @@ public class NavBar extends HBox{
         setMinHeight(50);
     }
 
+    public void resetForm(){
+        title.clear();
+        dueDate.setValue(LocalDate.now());
+        typeBox.setValue(AssignmentType.HOMEWORK);
+        description.clear();
+
+    }
+
     public String getTitle(){
         return title.getText();
     }

@@ -1,7 +1,3 @@
+mhgjdfg|2026-01-09|WORKSHOP|false|,cdgchkdgk
 |2026-01-24|HOMEWORK|true|
-|2026-01-24|HOMEWORK|true|
-|2026-01-24|HOMEWORK|true|
-|2026-01-24|HOMEWORK|true|
-|2026-01-24|HOMEWORK|true|
-|2026-01-24|HOMEWORK|false|
-|2026-01-27|EXTRA_HOUR|true|
+asdfgasdgf|2026-01-24|HOMEWORK|true|

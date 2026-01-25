@@ -32,6 +32,7 @@ public class HelloApplication extends Application {
             assignmentStorage.addAssignment(assignment);
             assignmentListView.addAssignment(assignment);
             assignmentListView.refresh(assignmentStorage.getAssignments());
+            navBar.resetForm();
         });
 
         navBar.setOnClearList(() -> {
