@@ -29,11 +29,13 @@ public class HelloApplication extends Application {
 
 
         navBar.setOnAddCourse(() -> {
-            if(!navBar.isCourseNameEmpty()){
+            if (!navBar.isCourseNameEmpty()) {
                 Course course = new Course(navBar.getCourseName());
-                courseStorage.addCourse(course);
-                navBar.addCourse(course);
-                navBar.resetCourseForm();
+
+                if (courseStorage.addCourseIfNotExists(course)) {
+                    navBar.addCourse(course);
+                    navBar.resetCourseForm();
+                }
             }
         });
 

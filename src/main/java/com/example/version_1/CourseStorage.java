@@ -66,8 +66,24 @@ public class CourseStorage {
         courses.add(course);
         save();
     }
+    
+    public boolean addCourseIfNotExists(Course course) {
+        if (courseExists(course.getName(), course.getGroup())) {
+            return false;
+        }
+        courses.add(course);
+        save();
+        return true;
+    }
 
     public List<Course> getCourses() {
         return courses;
+    }
+
+    public boolean courseExists(String name, String group) {
+        return courses.stream().anyMatch(c ->
+                c.getName().equalsIgnoreCase(name.trim()) &&
+                        c.getGroup().equalsIgnoreCase(group.trim())
+        );
     }
 }
