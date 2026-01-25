@@ -38,9 +38,11 @@ public class AssignmentListView extends ScrollPane {
         listContainer.getChildren().clear();
 
         for (Assignment assignment : assignments) {
-            AssignmentItemView view = new AssignmentItemView(assignment);
-            items.add(view);
-            listContainer.getChildren().add(view);
+            if(!assignment.getCompleted()){
+                AssignmentItemView view = new AssignmentItemView(assignment);
+                items.add(view);
+                listContainer.getChildren().add(view);
+            }
         }
     }
 }
