@@ -23,16 +23,18 @@ public class HelloApplication extends Application {
         });
 
         navBar.setOnAddAssignment(() -> {
-            Assignment assignment = new Assignment(
-                    navBar.getTitle(),
-                    navBar.getDueDate(),
-                    navBar.getType(),
-                    navBar.getDescription()
-            );
-            assignmentStorage.addAssignment(assignment);
-            assignmentListView.addAssignment(assignment);
-            assignmentListView.refresh(assignmentStorage.getAssignments());
-            navBar.resetForm();
+            if(!navBar.isClear()){
+                Assignment assignment = new Assignment(
+                        navBar.getTitle(),
+                        navBar.getDueDate(),
+                        navBar.getType(),
+                        navBar.getDescription()
+                );
+                assignmentStorage.addAssignment(assignment);
+                assignmentListView.addAssignment(assignment);
+                assignmentListView.refresh(assignmentStorage.getAssignments());
+                navBar.resetForm();
+            }
         });
 
         navBar.setOnClearList(() -> {

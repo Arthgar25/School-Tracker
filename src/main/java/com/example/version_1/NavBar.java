@@ -61,7 +61,13 @@ public class NavBar extends HBox{
         dueDate.setValue(LocalDate.now());
         typeBox.setValue(AssignmentType.HOMEWORK);
         description.clear();
+    }
 
+    public boolean isClear(){
+        if(title.getText().isEmpty() || dueDate.getValue() == null || description.getText().isEmpty()){
+            return true;
+        }
+        return false;
     }
 
     public String getTitle(){
